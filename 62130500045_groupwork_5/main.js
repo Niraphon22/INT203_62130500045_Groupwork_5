@@ -1,15 +1,10 @@
-class Cat {
-    constructor(title){
-        this.title = title;
-    }
-}
 
 const app = Vue.createApp( {
     data() {
         return {
-            tasks: [{id: 0, title: 'siamese', image: './images/1.jpg', done: false},
-                    {id: 1, title: 'exotic', image: './images/2.jpg', done: false},
-                    {id: 2, title: 'persian', image: './images/3.jpg', done: false}
+            tasks: [{id: 0, title: 'Siamese', image: './images/1.jpg', done: false},
+                    {id: 1, title: 'Exotic', image: './images/2.jpg', done: false},
+                    {id: 2, title: 'Persian', image: './images/3.jpg', done: false}
                 ],
             
             search: false,
@@ -20,6 +15,10 @@ const app = Vue.createApp( {
         }
     },
     methods: {
+        box_search(title){
+            this.boxsearch = title
+        },
+
         toggleDone(id){
             this.tasks[id].done = !this.tasks[id].done
         },
@@ -37,10 +36,6 @@ const app = Vue.createApp( {
 
         closePhoto(){
             this.photoShow = false
-        },
-
-        box_search(){
-            this.boxsearch = title
         }
 
         
@@ -51,11 +46,11 @@ const app = Vue.createApp( {
         },
         searchPhoto(){
             if(this.boxsearch){
-                if(this.tasks.filter(tasks => tasks.title.includes(this.boxsearch.toLowerCase())) == ''){
+                if(this.tasks.filter(tasks => tasks.title.toLowerCase().includes(this.boxsearch.toLowerCase())) == ''){
                     this.notFound = true
                 }else{
                     this.notFound = false
-                    return this.tasks.filter(tasks => tasks.title.includes(this.boxsearch.toLowerCase()))
+                    return this.tasks.filter(tasks => tasks.title.toLowerCase().includes(this.boxsearch.toLowerCase()))
                 }
             }else{
                 this.notFound = false

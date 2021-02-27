@@ -27,13 +27,12 @@
     
     <div class="flex justify-center mt-4 ">
       <div>
-        <photo-search @status-search="statusSearch" @box-search="box_search" v-show="search"></photo-search>
-      </div>
-      <div>
+        <photo-search @box-search="box_search" @status-search="statusSearch" v-show="search"></photo-search>
         <button  @click="statusSearch" v-show="!search">
           <span class="material-icons">search</span>
-        </button>
-        
+        </button>  
+      </div>
+      <div>      
       </div>
     </div>
 
@@ -45,8 +44,8 @@
 
       <div class="overflow-hidden">
         <ul class="grid grid-cols-3 gap-x-28 gap-y-8 mt-4 lg:grid-cols-3">
-          <li v-for="(tasks,index) in tasks">
-            <photo-item :tasks=tasks @toggle-done='toggleDone(tasks.id)' @show-photo='showPhoto(index)'></photo-item>
+          <li v-for="(task,index) in searchPhoto">
+            <photo-item :task='task' @toggle-done='toggleDone(task.id)' @show-photo='showPhoto(index)'></photo-item>
           </li>
         </ul>
       </div>
@@ -57,10 +56,7 @@
 
     </div>
   </div>
-
-                    
-                                    
-
+                                                    
   <!-- my main.js -->
   <script src="./main.js"></script>
   <script src="./Components/PhotoItem.js"></script>

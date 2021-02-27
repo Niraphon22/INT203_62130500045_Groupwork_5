@@ -5,7 +5,7 @@ app.component('photo-search', {
     `
     <div class="flex justify-center mt-4 ">
     <div>
-    <input @input="box_search" v-model="boxsearch" placeholder="Enter cat breed!"
+    <input type="text" @input="box_search" v-model="boxsearch" placeholder="Enter cat breed!"
             class="p-2 bg-white rounded border-2 border-gray-600">
     </div>
     <div>
